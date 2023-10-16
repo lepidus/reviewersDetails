@@ -17,11 +17,11 @@ class ReviewersDetailsPlugin extends GenericPlugin
 
     public function getDisplayName()
     {
-        return '';
+        return __('plugins.generic.reviewersDetails.name');
     }
 
     public function getDescription()
     {
-        return '';
+        return __('plugins.generic.reviewersDetails.description');
     }
 }
