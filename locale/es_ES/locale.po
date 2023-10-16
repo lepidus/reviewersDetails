@@ -1,0 +1,7 @@
+msgid "plugins.generic.reviewersDetails.name"
+msgstr "Detalles de los Revisores"
+
+msgid "plugins.generic.reviewersDetails.description"
+msgstr ""
+"Este módulo permite a los administradores acceder fácilmente a una lista de revisores, "
+"realizar búsquedas avanzadas, ver estadísticas y acceder al historial de los revisores."

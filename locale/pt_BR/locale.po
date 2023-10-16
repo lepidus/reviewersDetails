@@ -1,0 +1,7 @@
+msgid "plugins.generic.reviewersDetails.name"
+msgstr "Detalhes de Avaliadores"
+
+msgid "plugins.generic.reviewersDetails.description"
+msgstr ""
+"Este plugin permite aos administradores acessar facilmente uma lista de avaliadores, "
+"realizar buscas avançadas, visualizar estatísticas e acessar o histórico dos avaliadores."
