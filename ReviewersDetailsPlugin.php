@@ -6,10 +6,10 @@ class ReviewersDetailsPlugin extends GenericPlugin
 {
     public function register($category, $path, $mainContextId = null)
     {
-
         $success = parent::register($category, $path);
 
         if ($success && $this->getEnabled()) {
+            $this->initHookCallbacks();
         }
 
         return $success;
@@ -23,5 +23,11 @@ class ReviewersDetailsPlugin extends GenericPlugin
     public function getDescription()
     {
         return __('plugins.generic.reviewersDetails.description');
+    }
+
+    public function initHookCallbacks()
+    {
+        $this->import('hookCallbacks.ReviewersTabHookCallback');
+        $hookCallback = new ReviewersTabHookCallback($this);
     }
 }
