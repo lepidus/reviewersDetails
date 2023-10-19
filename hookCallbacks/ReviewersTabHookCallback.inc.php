@@ -31,6 +31,26 @@ class ReviewersTabHookCallback
             return false;
         }
 
+        $pluginFullPath = $request->getBaseUrl() . DIRECTORY_SEPARATOR . $this->plugin->getPluginPath();
+
+        $templateMgr->addJavaScript(
+            'reviewers-list-item',
+            $pluginFullPath . '/js/components/ReviewersListItem.js',
+            [
+                'priority' => STYLE_SEQUENCE_LAST,
+                'contexts' => ['backend']
+            ]
+        );
+
+        $templateMgr->addJavaScript(
+            'reviewers-list-panel',
+            $pluginFullPath . '/js/components/ReviewersListPanel.js',
+            [
+                'priority' => STYLE_SEQUENCE_LAST,
+                'contexts' => ['backend']
+            ]
+        );
+
         AppLocale::requireComponents(LOCALE_COMPONENT_PKP_EDITOR);
 
         $reviewerListPanel = new \PKP\components\listPanels\PKPSelectReviewerListPanel(
