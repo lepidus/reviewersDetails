@@ -1,19 +1,8 @@
 let listItemTemplate = pkp.Vue.compile(`
-    <div
-        class="listPanel__item--reviewer"
-        :class="currentlyAssigned ? '-isAssigned' : ''"
-        >
+    <div class="listPanel__item--reviewer">
         <div class="listPanel__itemSummary">
             <div class="listPanel__itemIdentity">
                 <div class="listPanel__itemTitle">
-                    <badge
-                        v-if="item.reviewsActive && canSelect"
-                        class="listPanel__item--reviewer__active"
-                    >
-                        {{
-                            activeReviewsCountLabel.replace('{$count}', item.reviewsActive)
-                        }}
-                    </badge>
                     {{ item.fullName }}
                     <span
                         v-if="item.reviewerRating !== null && canSelect"
@@ -43,6 +32,9 @@ let listItemTemplate = pkp.Vue.compile(`
                         class="listPanel__item--reviewer__affiliation"
                     >
                         {{ localize(item.affiliation) }}
+                        <span class="listPanel__item--reviewer__email">
+                            {{ item.email }}
+                        </span>
                         <a
                             v-if="item.orcid"
                             :href="item.orcid"
@@ -58,7 +50,6 @@ let listItemTemplate = pkp.Vue.compile(`
                 <!-- use aria-hidden on these details because the information can be
                     more easily acquired by screen readers from the details panel. -->
                 <div
-                    v-if="canSelect"
                     class="listPanel__item--reviewer__brief"
                     aria-hidden="true"
                 >
@@ -78,33 +69,9 @@ let listItemTemplate = pkp.Vue.compile(`
                         {{ interestsString }}
                     </span>
                 </div>
-
-                <div v-if="currentlyAssigned" class="listPanel__item--reviewer__notice">
-                    <icon icon="exclamation-triangle" :inline="true" />
-                    {{ currentlyAssignedLabel }}
-                </div>
-                <div
-                    v-else-if="warnOnAssignment && !isWarningBypassed"
-                    class="listPanel__item--reviewer__notice"
-                >
-                    <icon icon="lock" :inline="true" />
-                    {{ warnOnAssignmentLabel }}
-                    <button
-                        @click.prevent="unlockAssignment"
-                        class="listPanel__item--reviewer__noticeAction"
-                    >
-                        {{ warnOnAssignmentUnlockLabel }}
-                    </button>
-                </div>
             </div>
 
             <div class="listPanel__itemActions">
-                <pkp-button v-if="canSelect" @click="select">
-                    <span aria-hidden="true">{{ selectReviewerLabel }}</span>
-                    <span class="-screenReader">
-                        {{ __('common.selectWithName', {name: item.fullName}) }}
-                    </span>
-                </pkp-button>
                 <expander
                     :isExpanded="isExpanded"
                     :itemName="item.fullName"
