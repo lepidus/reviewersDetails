@@ -80,6 +80,12 @@ let listItemTemplate = pkp.Vue.compile(`
             </div>
 
             <div class="listPanel__itemActions">
+                <pkp-button @click="showHistory">
+                    <span aria-hidden="true">{{ reviewerHistoryLabel }}</span>
+                    <span class="-screenReader">
+                        {{ __('common.selectWithName', {name: item.fullName}) }}
+                    </span>
+				</pkp-button>
                 <expander
                     :isExpanded="isExpanded"
                     :itemName="item.fullName"
@@ -161,6 +167,18 @@ let listItemTemplate = pkp.Vue.compile(`
 pkp.Vue.component('reviewers-list-item', {
 	name: 'ReviewersListItem',
 	extends: pkp.controllers.Container.components.SelectReviewerListPanel.components.SelectReviewerListItem,
+    props: {
+        reviewerHistoryLabel: {
+			type: String,
+			required: true
+		},
+    },
+    methods: {
+		showHistory() {
+			this.$emit('showHistory', this.item);
+			pkp.eventBus.$emit('history:reviewer', this.item);
+		},
+	},
     render: function (h) {
         return listItemTemplate.render.call(this, h);
     },

@@ -63,8 +63,6 @@ let listPanelTemplate = pkp.Vue.compile(`
 						:biographyLabel="biographyLabel"
 						:cancelledReviewsLabel="cancelledReviewsLabel"
 						:completedReviewsLabel="completedReviewsLabel"
-						:currentlyAssigned="currentlyAssigned.includes(item.id)"
-						:currentlyAssignedLabel="currentlyAssignedLabel"
 						:daySinceLastAssignmentLabel="daySinceLastAssignmentLabel"
 						:daysSinceLastAssignmentLabel="daysSinceLastAssignmentLabel"
 						:daysSinceLastAssignmentDescriptionLabel="
@@ -77,11 +75,8 @@ let listPanelTemplate = pkp.Vue.compile(`
 						:neverAssignedLabel="neverAssignedLabel"
 						:reviewerRatingLabel="reviewerRatingLabel"
 						:reviewInterestsLabel="reviewInterestsLabel"
-						:selectReviewerLabel="selectReviewerLabel"
+						:reviewerHistoryLabel="reviewerHistoryLabel"
 						:selectorName="selectorName"
-						:warnOnAssignment="warnOnAssignment.includes(item.id)"
-						:warnOnAssignmentLabel="warnOnAssignmentLabel"
-						:warnOnAssignmentUnlockLabel="warnOnAssignmentUnlockLabel"
 					/>
 				</template>
 
@@ -102,6 +97,12 @@ let listPanelTemplate = pkp.Vue.compile(`
 pkp.Vue.component('reviewers-list-panel', {
 	name: 'ReviewersListPanel',
 	extends: pkp.controllers.Container.components.SelectReviewerListPanel,
+	props: {
+        reviewerHistoryLabel: {
+			type: String,
+			required: true
+		},
+    },
     render: function (h) {
         return listPanelTemplate.render.call(this, h);
     },

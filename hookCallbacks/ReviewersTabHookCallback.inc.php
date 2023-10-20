@@ -36,7 +36,8 @@ class ReviewersTabHookCallback
 
         $this->loadResources($request, $templateMgr);
 
-        $reviewerListPanel = new \PKP\components\listPanels\PKPSelectReviewerListPanel(
+        import('plugins.generic.reviewersDetails.classes.components.listPanels.ReviewersListPanel');
+        $reviewerListPanel = new ReviewersListPanel(
             'reviewers',
             __('user.role.reviewers'),
             [
