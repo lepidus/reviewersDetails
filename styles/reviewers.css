@@ -1,3 +1,18 @@
 .listPanel__item--reviewer__email {
 	margin-left: 0.5rem;
 }
+
+.reviewsListPanel .listPanel__itemSubtitle {
+	position: relative;
+	display: block;
+}
+
+.reviewsListPanel .listPanel__itemTitle,
+.reviewsListPanel .listPanel__itemSubtitle {
+	padding-left: 2.5rem;
+}
+
+.reviewsListPanel .listPanel__itemStatus {
+	margin-left: 0.5rem;
+	margin-right: 0.25rem;
+}

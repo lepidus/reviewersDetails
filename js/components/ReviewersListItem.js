@@ -3,9 +3,17 @@ let listItemTemplate = pkp.Vue.compile(`
         <div class="listPanel__itemSummary">
             <div class="listPanel__itemIdentity">
                 <div class="listPanel__itemTitle">
+                    <badge
+                        v-if="item.reviewsActive"
+                        class="listPanel__item--reviewer__active"
+                    >
+                        {{
+                            activeReviewsCountLabel.replace('{$count}', item.reviewsActive)
+                        }}
+					</badge>
                     {{ item.fullName }}
                     <span
-                        v-if="item.reviewerRating !== null && canSelect"
+                        v-if="item.reviewerRating !== null"
                         class="listPanel__item--reviewer__rating"
                     >
                         <icon
@@ -72,6 +80,12 @@ let listItemTemplate = pkp.Vue.compile(`
             </div>
 
             <div class="listPanel__itemActions">
+                <pkp-button @click="showHistory">
+                    <span aria-hidden="true">{{ reviewerHistoryLabel }}</span>
+                    <span class="-screenReader">
+                        {{ __('common.selectWithName', {name: item.fullName}) }}
+                    </span>
+				</pkp-button>
                 <expander
                     :isExpanded="isExpanded"
                     :itemName="item.fullName"
@@ -153,6 +167,17 @@ let listItemTemplate = pkp.Vue.compile(`
 pkp.Vue.component('reviewers-list-item', {
 	name: 'ReviewersListItem',
 	extends: pkp.controllers.Container.components.SelectReviewerListPanel.components.SelectReviewerListItem,
+    props: {
+        reviewerHistoryLabel: {
+			type: String,
+			required: true
+		},
+    },
+    methods: {
+		showHistory() {
+			this.$emit('show-history', this.item);
+		},
+	},
     render: function (h) {
         return listItemTemplate.render.call(this, h);
     },

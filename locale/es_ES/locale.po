@@ -5,3 +5,24 @@ msgid "plugins.generic.reviewersDetails.description"
 msgstr ""
 "Este módulo permite a los administradores acceder fácilmente a una lista de revisores, "
 "realizar búsquedas avanzadas, ver estadísticas y acceder al historial de los revisores."
+
+msgid "plugins.generic.reviewersDetails.viewHistory"
+msgstr "Ver historial"
+
+msgid "plugins.generic.reviewersDetails.reviewsHistory"
+msgstr "Historial de Revisiones"
+
+msgid "plugins.generic.reviewersDetails.reviews"
+msgstr "Revisiones"
+
+msgid "plugins.generic.reviewersDetails.review.incomplete"
+msgstr "Activa"
+
+msgid "plugins.generic.reviewersDetails.review.completed"
+msgstr "Completada"
+
+msgid "plugins.generic.reviewersDetails.review.declined"
+msgstr "Rechazadas"
+
+msgid "plugins.generic.reviewersDetails.review.cancelled"
+msgstr "Cancelada"

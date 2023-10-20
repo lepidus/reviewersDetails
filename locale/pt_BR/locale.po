@@ -5,3 +5,24 @@ msgid "plugins.generic.reviewersDetails.description"
 msgstr ""
 "Este plugin permite aos administradores acessar facilmente uma lista de avaliadores, "
 "realizar buscas avançadas, visualizar estatísticas e acessar o histórico dos avaliadores."
+
+msgid "plugins.generic.reviewersDetails.viewHistory"
+msgstr "Ver histórico"
+
+msgid "plugins.generic.reviewersDetails.reviewsHistory"
+msgstr "Histórico de Avaliações"
+
+msgid "plugins.generic.reviewersDetails.reviews"
+msgstr "Avaliações"
+
+msgid "plugins.generic.reviewersDetails.review.incomplete"
+msgstr "Em andamento"
+
+msgid "plugins.generic.reviewersDetails.review.completed"
+msgstr "Completa"
+
+msgid "plugins.generic.reviewersDetails.review.declined"
+msgstr "Recusada"
+
+msgid "plugins.generic.reviewersDetails.review.cancelled"
+msgstr "Cancelada"

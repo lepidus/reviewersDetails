@@ -11,6 +11,7 @@ class ReviewersTabHookCallback
         HookRegistry::register('Template::Settings::access', [$this, 'addReviewersTab']);
         HookRegistry::register('TemplateManager::display', [$this, 'setupReviewersListPanel']);
         HookRegistry::register('User::getProperties::reviewerSummaryProperties', [$this, 'addReviewerEmailProp']);
+        HookRegistry::register('Dispatcher::dispatch', [$this, 'setupAPIHandler']);
     }
 
     public function addReviewersTab($hookName, $args)
@@ -36,7 +37,8 @@ class ReviewersTabHookCallback
 
         $this->loadResources($request, $templateMgr);
 
-        $reviewerListPanel = new \PKP\components\listPanels\PKPSelectReviewerListPanel(
+        import('plugins.generic.reviewersDetails.classes.components.listPanels.ReviewersListPanel');
+        $reviewerListPanel = new ReviewersListPanel(
             'reviewers',
             __('user.role.reviewers'),
             [
@@ -99,5 +101,23 @@ class ReviewersTabHookCallback
         $props[] = 'email';
 
         return false;
+    }
+
+    public function setupAPIHandler($hookName, $request)
+    {
+        $router = $request->getRouter();
+
+        if (($router instanceof \APIRouter) && str_contains($request->getRequestPath(), 'api/v1/reviews')) {
+            $this->plugin->import('api.v1.reviews.ReviewHandler');
+            $handler = new ReviewHandler();
+        }
+
+        if (!isset($handler)) {
+            return;
+        }
+
+        $router->setHandler($handler);
+        $handler->getApp()->run();
+        exit;
     }
 }
