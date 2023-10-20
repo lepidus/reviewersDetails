@@ -5,9 +5,14 @@ class ReviewersListPanel extends \PKP\components\listPanels\PKPSelectReviewerLis
     public function getConfig()
     {
         $config = parent::getConfig();
-
-        $config['reviewerHistoryLabel'] = __('plugins.generic.reviewersDetails.viewHistory');
-        $config['reviewsHistoryLabel'] = __('plugins.generic.reviewersDetails.reviewsHistory');
+        $config = array_merge(
+            $config,
+            [
+                'reviewerHistoryLabel' => __('plugins.generic.reviewersDetails.viewHistory'),
+                'reviewsHistoryLabel' => __('plugins.generic.reviewersDetails.reviewsHistory'),
+                'reviewsLabel' => __('plugins.generic.reviewersDetails.reviews'),
+            ]
+        );
 
         return $config;
     }

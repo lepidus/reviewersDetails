@@ -11,3 +11,6 @@ msgstr "Ver histórico"
 
 msgid "plugins.generic.reviewersDetails.reviewsHistory"
 msgstr "Histórico de Avaliações"
+
+msgid "plugins.generic.reviewersDetails.reviews"
+msgstr "Avaliações"

@@ -97,6 +97,31 @@ let listPanelTemplate = pkp.Vue.compile(`
 					modalName="reviewsHistory"
 					:title="reviewsHistoryLabel"
 				>
+					<list-panel
+						:title="reviewsLabel"
+						:items="reviews"
+						class="reviewsListPanel"
+					>
+						<template v-slot:itemTitle="{item}">
+							<div class="listPanel__item--submission__id">
+								{{ item.id }}
+							</div>
+							{{ item.authorsStringShort }}
+						</template>
+						<template v-slot:itemSubtitle="{item}">
+							{{ localize(item.title) }}
+						</template>
+						<template v-slot:itemActions="{item}">
+							<badge
+								class="listPanel__itemStatus"
+							>
+								{{ item.status }}
+							</badge>
+							<pkp-button element="a" :href="item.urlWorkflow">
+								{{ __('common.view') }}
+							</pkp-button>
+						</template>
+					</list-panel>
 				</modal-content>
 			</modal>
 		</slot>
@@ -115,7 +140,16 @@ pkp.Vue.component('reviewers-list-panel', {
 			type: String,
 			required: true
 		},
+		reviewsLabel: {
+			type: String,
+			required: true
+		},
     },
+	data() {
+		return {
+			reviews: []
+		};
+	},
 	methods: {
 		showHistory(item) {
 			this.$modal.show('reviewsHistory');
