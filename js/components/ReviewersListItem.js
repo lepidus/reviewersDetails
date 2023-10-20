@@ -175,8 +175,7 @@ pkp.Vue.component('reviewers-list-item', {
     },
     methods: {
 		showHistory() {
-			this.$emit('showHistory', this.item);
-			pkp.eventBus.$emit('history:reviewer', this.item);
+			this.$emit('show-history', this.item);
 		},
 	},
     render: function (h) {

@@ -77,6 +77,7 @@ let listPanelTemplate = pkp.Vue.compile(`
 						:reviewInterestsLabel="reviewInterestsLabel"
 						:reviewerHistoryLabel="reviewerHistoryLabel"
 						:selectorName="selectorName"
+						@show-history="showHistory"
 					/>
 				</template>
 
@@ -90,6 +91,14 @@ let listPanelTemplate = pkp.Vue.compile(`
 					/>
 				</template>
 			</list-panel>
+			<modal v-bind="MODAL_PROPS" name="reviewsHistory">
+				<modal-content
+					:closeLabel="__('common.close')"
+					modalName="reviewsHistory"
+					:title="reviewsHistoryLabel"
+				>
+				</modal-content>
+			</modal>
 		</slot>
 	</div>
 `);
@@ -102,7 +111,16 @@ pkp.Vue.component('reviewers-list-panel', {
 			type: String,
 			required: true
 		},
+		reviewsHistoryLabel: {
+			type: String,
+			required: true
+		},
     },
+	methods: {
+		showHistory(item) {
+			this.$modal.show('reviewsHistory');
+		},
+	},
     render: function (h) {
         return listPanelTemplate.render.call(this, h);
     },

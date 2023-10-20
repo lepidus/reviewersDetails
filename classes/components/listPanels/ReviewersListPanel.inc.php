@@ -7,6 +7,7 @@ class ReviewersListPanel extends \PKP\components\listPanels\PKPSelectReviewerLis
         $config = parent::getConfig();
 
         $config['reviewerHistoryLabel'] = __('plugins.generic.reviewersDetails.viewHistory');
+        $config['reviewsHistoryLabel'] = __('plugins.generic.reviewersDetails.reviewsHistory');
 
         return $config;
     }

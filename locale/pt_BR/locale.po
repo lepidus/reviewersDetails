@@ -8,3 +8,6 @@ msgstr ""
 
 msgid "plugins.generic.reviewersDetails.viewHistory"
 msgstr "Ver histórico"
+
+msgid "plugins.generic.reviewersDetails.reviewsHistory"
+msgstr "Histórico de Avaliações"
