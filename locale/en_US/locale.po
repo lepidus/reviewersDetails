@@ -14,3 +14,15 @@ msgstr "Reviews History"
 
 msgid "plugins.generic.reviewersDetails.reviews"
 msgstr "Reviews"
+
+msgid "plugins.generic.reviewersDetails.review.incomplete"
+msgstr "Active"
+
+msgid "plugins.generic.reviewersDetails.review.completed"
+msgstr "Completed"
+
+msgid "plugins.generic.reviewersDetails.review.declined"
+msgstr "Declined"
+
+msgid "plugins.generic.reviewersDetails.review.cancelled"
+msgstr "Cancelled"
