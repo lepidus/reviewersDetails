@@ -3,9 +3,17 @@ let listItemTemplate = pkp.Vue.compile(`
         <div class="listPanel__itemSummary">
             <div class="listPanel__itemIdentity">
                 <div class="listPanel__itemTitle">
+                    <badge
+                        v-if="item.reviewsActive"
+                        class="listPanel__item--reviewer__active"
+                    >
+                        {{
+                            activeReviewsCountLabel.replace('{$count}', item.reviewsActive)
+                        }}
+					</badge>
                     {{ item.fullName }}
                     <span
-                        v-if="item.reviewerRating !== null && canSelect"
+                        v-if="item.reviewerRating !== null"
                         class="listPanel__item--reviewer__rating"
                     >
                         <icon
