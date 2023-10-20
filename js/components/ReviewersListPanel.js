@@ -102,14 +102,19 @@ let listPanelTemplate = pkp.Vue.compile(`
 						:items="reviews"
 						class="reviewsListPanel"
 					>
-						<template v-slot:itemTitle="{item}">
+					<template v-slot:itemTitle="{item}">
+						<span
+							v-if="item.authorsStringShort"
+							class="listPanel__item--submission__author"
+						>
 							<div class="listPanel__item--submission__id">
 								{{ item.id }}
 							</div>
 							{{ item.authorsStringShort }}
+						</span>
 						</template>
 						<template v-slot:itemSubtitle="{item}">
-							{{ localize(item.title) }}
+							{{ localize(item.fullTitle) }}
 						</template>
 						<template v-slot:itemActions="{item}">
 							<badge
@@ -144,6 +149,10 @@ pkp.Vue.component('reviewers-list-panel', {
 			type: String,
 			required: true
 		},
+		reviewsUrl: {
+			type: String,
+			required: true
+		},
     },
 	data() {
 		return {
@@ -152,6 +161,20 @@ pkp.Vue.component('reviewers-list-panel', {
 	},
 	methods: {
 		showHistory(item) {
+			const self = this;
+
+            $.ajax({
+                url: this.reviewsUrl,
+                type: 'GET',
+				data: {reviewerId: item.id},
+                success(r) {
+                    self.reviews = r.items;
+                },
+                error(r) {
+                    self.ajaxErrorCallback(r);
+                }
+            });
+
 			this.$modal.show('reviewsHistory');
 		},
 	},

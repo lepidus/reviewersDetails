@@ -2,15 +2,7 @@
 	margin-left: 0.5rem;
 }
 
-.reviewsListPanel .listPanel__item--submission__id {
-	position: absolute;
-	top: 0;
-	left: 0;
-	font-size: 0.75rem;
-	line-height: 22px;
-	color: #222;
-}
-.reviewsListPanel .listPanel__itemTitle {
+.reviewsListPanel .listPanel__itemSubtitle {
 	position: relative;
 	display: block;
 }
