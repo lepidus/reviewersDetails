@@ -4,8 +4,8 @@
 <version>
 	<application>reviewersDetails</application>
 	<type>plugins.generic</type>
-	<release>1.0.0.0</release>
-	<date>2023-10-20</date>
+	<release>1.0.1.0</release>
+	<date>2023-10-26</date>
 	<lazy-load>1</lazy-load>
 	<class>ReviewersDetailsPlugin</class>
 </version>

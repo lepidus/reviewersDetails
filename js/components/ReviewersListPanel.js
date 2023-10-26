@@ -2,7 +2,7 @@ let listPanelTemplate = pkp.Vue.compile(`
     <div>
 		<slot>
 			<list-panel
-				class="listPanel--selectReviewer"
+				class="listPanel--reviewers"
 				:isSidebarVisible="isSidebarVisible"
 				:items="items"
 			>

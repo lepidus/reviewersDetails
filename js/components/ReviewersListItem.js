@@ -36,10 +36,12 @@ let listItemTemplate = pkp.Vue.compile(`
 
                 <div class="listPanel__itemSubtitle">
                     <div
-                        v-if="item.affiliation || item.orcid"
-                        class="listPanel__item--reviewer__affiliation"
+                        v-if="item.affiliation || item.orcid || item.email"
+                        class="listPanel__item--reviewer__info"
                     >
-                        {{ localize(item.affiliation) }}
+                        <span class="listPanel__item--reviewer__affiliation">
+                            {{ localize(item.affiliation) }}
+                        </span>
                         <span class="listPanel__item--reviewer__email">
                             {{ item.email }}
                         </span>

@@ -1,5 +1,14 @@
-.listPanel__item--reviewer__email {
-	margin-left: 0.5rem;
+.listPanel--reviewers .listPanel__item--reviewer__info {
+	display: flex;
+	flex-direction: column;
+}
+
+.listPanel--reviewers .listPanel__item--reviewer__orcid {
+	margin-left: 0;
+}
+
+.listPanel--reviewers .listPanel__item--reviewer__info > * {
+	margin-top: .5rem;
 }
 
 .reviewsListPanel .listPanel__itemSubtitle {
