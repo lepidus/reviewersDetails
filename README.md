@@ -21,7 +21,7 @@ To download the plugin, go to the [Releases page](https://github.com/lepidus/rev
 4. Click __Save__ and the plugin will be installed on your website.
 
 ## Credits
-This plugin was sponsored by the journal [Encontros Bibli](https://periodicos.ufsc.br/index.php/eb), from Universidade Federal de Santa Catarina (UFSC).
+This plugin was sponsored by the journal [Encontros Bibli](https://periodicos.ufsc.br/index.php/eb/), from Universidade Federal de Santa Catarina (UFSC).
 
 Developed by [Lepidus Tecnologia](https://github.com/lepidus).
 
